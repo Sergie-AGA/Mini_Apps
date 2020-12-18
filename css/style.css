@@ -1,0 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+body {
+  box-sizing: border-box;
+  background-color: #dff1e1;
+  overflow-x: hidden; }
+
+h1,
+h2,
+h3 {
+  text-align: center; }
+
+.temp {
+  text-align: center; }
+
+a {
+  text-decoration: none; }
+
+.cursive-title {
+  font-family: "Nerko One", cursive;
+  font-size: 5rem;
+  color: #0e7a46;
+  z-index: 1; }
+
+.blend {
+  opacity: 0.4;
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  user-select: none; }
+
+.btn {
+  border-radius: 5px;
+  border: 2px solid #01930c;
+  padding: 3px;
+  margin: auto;
+  display: block;
+  width: fit-content;
+  color: #16bf6e; }
+  .btn:hover {
+    background-color: #39e894;
+    color: white; }
+
+.circle-button {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #01930c;
+  padding-top: 0.75rem;
+  color: #ddd;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: 0.5s; }
+  .circle-button:hover {
+    background-color: #16bf6e; }
+  .circle-button:active {
+    color: #0e7a46; }
+
+.main-circle {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #01930c;
+  padding-top: 0.75rem;
+  color: #ddd;
+  font-size: 2.5rem;
+  z-index: 10; }
+
+.button-group {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 13rem;
+  height: 13rem;
+  z-index: 3; }
+  .button-group:hover #topCircle {
+    transform: translateY(-160%); }
+  .button-group:hover #diagonalCircle {
+    transform: translate(110%, -110%); }
+  .button-group:hover #rightCircle {
+    transform: translateX(160%); }
+
+.active-button {
+  color: #0e7a46; }
+
+.hover-text {
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  font-family: "Nerko One", cursive; }
+
+.button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Ubuntu", sans-serif; }
+  .button:active {
+    transform: scale(0.95); }
+  .button--positive {
+    background-color: #0b7901; }
+    .button--positive:hover {
+      background-color: #0e9901; }
+  .button--neutral {
+    background-color: #5d7200; }
+    .button--neutral:hover {
+      background-color: #7d9901; }
+  .button--negative {
+    background-color: #8f0e00; }
+    .button--negative:hover {
+      background-color: #bd1402; }
+
+.inline-button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto; }
+
+.modal {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(55, 55, 55, 0.6);
+  width: 18rem; }
+  .modal__text {
+    color: #dff1e1;
+    text-align: justify; }
+
+.invisible {
+  display: none; }
+
+.layer {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 30;
+  transition: 0.4s;
+  display: none; }
+
+.footer {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.8rem;
+  color: rgba(1, 147, 12, 0.4);
+  z-index: 10; }
+
+.lower-position-modal {
+  position: absolute;
+  bottom: 3rem;
+  left: 12rem; }
+
+.block {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: center; }
+
+.edit-modal {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(100%, -50%);
+  padding: 10px;
+  height: 100vh;
+  max-height: 30rem;
+  border: 1px solid #b7b7b7;
+  border-radius: 10px 0 0 10px;
+  width: 100vw;
+  max-width: 25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ddd;
+  z-index: 10;
+  transition: 0.6s;
+  box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.3); }
+  .edit-modal--active {
+    transform: translateY(-50%); }
+  .edit-modal__left {
+    width: 5.5rem;
+    text-align: right; }
+  .edit-modal__center {
+    margin: 0 0.1rem; }
+  .edit-modal__right {
+    flex-grow: 1;
+    margin-right: 1rem; }
+  .edit-modal__text {
+    margin-right: 1rem;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
+    font-weight: 500; }
+  .edit-modal__input {
+    padding: 6px;
+    height: 1.6rem;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 5px; }
+    .edit-modal__input:focus {
+      border-bottom: 3px solid #16bf6e; }
+  .edit-modal__button-group {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; }
+  .edit-modal__button {
+    margin: auto;
+    width: 80%;
+    border-radius: 10px;
+    height: 2.4rem;
+    padding: 5px;
+    box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-family: "Nerko One", cursive;
+    color: #ddd;
+    font-size: 1.4rem;
+    transition: 0.3s; }
+    .edit-modal__button:hover {
+      transform: translateY(-4px); }
+    .edit-modal__button:active {
+      transform: translateY(-2px) scale(0.95); }
+  .edit-modal__delete-prompt {
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f87d7d;
+    color: white;
+    width: 15rem;
+    text-align: justify;
+    z-index: 40;
+    box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.3);
+    display: none; }
+  .edit-modal__prompt-text {
+    font-family: "Ubuntu", sans-serif;
+    margin-bottom: 10px; }
+
+.warning-text {
+  font-weight: bold;
+  text-decoration: underline; }
+
+.main-area {
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  position: relative; }
+
+.note {
+  width: 10rem;
+  height: 15rem;
+  background-color: #ffff88;
+  color: black;
+  font-family: "Ubuntu", sans-serif;
+  border: 1px solid black;
+  border-radius: 0 5px 5px 5px;
+  resize: both;
+  overflow: auto;
+  z-index: 10;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
+  .note__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid black;
+    min-height: 2rem;
+    height: 5%;
+    cursor: move;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; }
+    .note__header__title {
+      text-align: justify;
+      width: 100%;
+      color: inherit;
+      padding: 3px; }
+    .note__header__edit {
+      width: 3rem;
+      position: relative; }
+    .note__header__icon {
+      color: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-top: 2px;
+      padding: 3px; }
+      .note__header__icon:hover {
+        color: #9d9d9d;
+        border: 1px solid #ddd; }
+      .note__header__icon:active {
+        transform: scale(0.95); }
+  .note__text {
+    width: 100%;
+    height: 85%;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    resize: none; }
+    .note__text:focus {
+      outline: none; }

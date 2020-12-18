@@ -1,0 +1,30 @@
+// base
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: color(light-main);
+  overflow-x: hidden;
+}
+
+// TYPOGRAPHY
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+.temp {
+  text-align: center;
+}
+// LINK RESET
+
+a {
+  text-decoration: none;
+}
