@@ -60,26 +60,27 @@ const confirmDelete = document.getElementById("confirmDelete")
 const cancelDelete = document.getElementById("cancelDelete")
 
 // LOCAL STORAGE
-// Storage.prototype.setObj = function(key, obj) {
-//     return this.setItem(key, JSON.stringify(obj))
-// }
-// Storage.prototype.getObj = function(key) {
-//     return JSON.parse(this.getItem(key))
-// }
+let activeId = 0
 
-// if (localStorage.getObj("savedNotes") !== null) {
-//     notes = localStorage.getObj("savedNotes")
-// }
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
 
+if (localStorage.getObj("savedNotes") !== null) {
+    notes = localStorage.getObj("savedNotes")
+}
 
-// notes.forEach(element => {
-//     mainArea.appendChild(element)
-// })
+notes.forEach(element => {
+    if (element !== "Deleted") {
+    createNote(element.id)
+    }
+})
 
 
 // MODAL ACTIVATION
-let activeId = 0
-
 function removePosAttributes() {
     modalPosNone.checked = false;
     modalPosTop.checked = false;
@@ -88,17 +89,17 @@ function removePosAttributes() {
 
 function activateModal(editingId) {
     activeId = editingId 
-    modalTitle.value = document.getElementById(`title${editingId}`).innerHTML;
-    modalImageUrl.value = document.getElementById(`url${editingId}`).value;
-    modalNoteColor.value = document.getElementById(`backgroundColor${editingId}`).value;
-    modalTextColor.value = document.getElementById(`textColor${editingId}`).value;
+    modalTitle.value = notes[editingId].title;
+    modalImageUrl.value = notes[editingId].url;
+    modalNoteColor.value = notes[editingId].noteColor;
+    modalTextColor.value = notes[editingId].textColor;
     
     removePosAttributes();
-    if (notes[editingId].position.value == "none") {
+    if (notes[editingId].position == "none") {
         modalPosNone.checked = true;
-    } else if (notes[editingId].position.value == "top") {
+    } else if (notes[editingId].position == "top") {
         modalPosTop.checked = true;
-    } else if(notes[editingId].position.value == "background") {
+    } else if(notes[editingId].position == "background") {
         modalPosBackground.checked = true;
     }
     
@@ -124,6 +125,7 @@ confirmDelete.addEventListener("click", () => {
     notes[activeId] = "Deleted";
     deleting.remove();
     dismissPrompt();
+    localStorage.setObj("savedNotes", notes);
     dismissModal();
 })
 
@@ -131,170 +133,206 @@ cancelDelete.addEventListener("click", () => dismissPrompt())
 
 deleteButton.addEventListener("click", () => showPrompt());
 
-saveButton.addEventListener("click", () => {
-    notes[activeId].title.innerHTML = modalTitle.value
-    notes[activeId].url.value = modalImageUrl.value
-    notes[activeId].noteColor.value = modalNoteColor.value
-    notes[activeId].textColor.value = modalTextColor.value
-    notes[activeId].note.style.backgroundColor = modalNoteColor.value
-    notes[activeId].title.style.color = modalTextColor.value
-    notes[activeId].icon.style.color = modalTextColor.value
-    notes[activeId].icon.style.borderColor = modalTextColor.value
-    notes[activeId].text.style.color = modalTextColor.value
-    if (modalPosTop.checked) {
-        notes[activeId].position.value = "top"
-        document.getElementById(`header${activeId}`).style.backgroundImage = `url(${notes[activeId].url.value})`
-        document.getElementById(`header${activeId}`).style.height = "40%";
-        document.getElementById(`text${activeId}`).style.height = "50%";
-        document.getElementById(`${activeId}`).style.backgroundImage = `none`
-    } else if (modalPosBackground.checked) {
-        notes[activeId].position.value = "background"
-        document.getElementById(`${activeId}`).style.backgroundImage = `url(${notes[activeId].url.value})`
-        document.getElementById(`text${activeId}`).style.backgroundColor = `transparent`
-        document.getElementById(`header${activeId}`).style.backgroundImage = `none`
-        document.getElementById(`header${activeId}`).style.height = "5%";
-        document.getElementById(`text${activeId}`).style.height = "85%";
+function styleNote(receivedId){
+    if (notes[receivedId] !== "Deleted") {
+    document.getElementById(`${receivedId}`).style.backgroundColor = notes[receivedId].noteColor
+    document.getElementById(`title${receivedId}`).style.color = notes[receivedId].textColor
+    document.getElementById(`icon${receivedId}`).style.color = notes[receivedId].textColor
+    document.getElementById(`icon${receivedId}`).style.borderColor = notes[receivedId].textColor
+    document.getElementById(`text${receivedId}`).style.color = notes[receivedId].textColor
+    if (notes[receivedId].position == "top") {
+        document.getElementById(`header${receivedId}`).style.backgroundImage = `url(${notes[receivedId].url})`
+        document.getElementById(`header${receivedId}`).style.height = "40%";
+        document.getElementById(`text${receivedId}`).style.height = "50%";
+        document.getElementById(`${receivedId}`).style.backgroundImage = `none`
+    } else if (notes[receivedId].position == "background") {
+        document.getElementById(`${receivedId}`).style.backgroundImage = `url(${notes[receivedId].url})`
+        document.getElementById(`text${receivedId}`).style.backgroundColor = `transparent`
+        document.getElementById(`header${receivedId}`).style.backgroundImage = `none`
+        document.getElementById(`header${receivedId}`).style.height = "5%";
+        document.getElementById(`text${receivedId}`).style.height = "85%";
     } else {
-        notes[activeId].position.value = "none"
-        document.getElementById(`${activeId}`).style.backgroundImage = `none`
-        document.getElementById(`header${activeId}`).style.backgroundImage = `none`
-        document.getElementById(`header${activeId}`).style.height = "5%";
-        document.getElementById(`text${activeId}`).style.height = "85%";
+        document.getElementById(`${receivedId}`).style.backgroundImage = `none`
+        document.getElementById(`header${receivedId}`).style.backgroundImage = `none`
+        document.getElementById(`header${receivedId}`).style.height = "5%";
+        document.getElementById(`text${receivedId}`).style.height = "85%";
     }
+    document.getElementById(`${receivedId}`).style.left = `${notes[receivedId].noteX}`;
+    document.getElementById(`${receivedId}`).style.top = `${notes[receivedId].noteY}`;
+}
+}
+
+saveButton.addEventListener("click", () => {
+    notes[activeId].title = modalTitle.value
+    document.getElementById(`title${activeId}`).innerHTML = modalTitle.value
+    notes[activeId].url = modalImageUrl.value
+    notes[activeId].noteColor = modalNoteColor.value
+    notes[activeId].textColor = modalTextColor.value
+    if (modalPosTop.checked) {
+        notes[activeId].position = "top"
+    } else if (modalPosBackground.checked) {
+        notes[activeId].position = "background"
+    } else {
+        notes[activeId].position = "none"
+    }
+    styleNote(activeId)
     localStorage.setObj("savedNotes", notes);
     dismissModal();
 })
+
 cancelButton.addEventListener("click", () => dismissModal())
 
+function textUpdate(receivedId) {
+    notes[receivedId].text = document.getElementById(`text${receivedId}`).value
+    localStorage.setObj("savedNotes", notes);
+}
+
 // GENERATING NOTE
-diagonalCircle.addEventListener("click", () => {
-    let note = document.createElement("div")
-    note.classList.add("note")
-
-    let noteId = notes.length
-    note.setAttribute("id", noteId)
-
-    let noteHeader = document.createElement("div")
-    noteHeader.classList.add("note__header")
-    noteHeader.setAttribute("id", `header${noteId}`)
-
-    let noteTitle = document.createElement("h2")
-    noteTitle.classList.add("note__header__title")
-    noteTitle.innerHTML = "Note"
-    noteTitle.setAttribute("id", `title${noteId}`)
-
-    let noteEdit = document.createElement("div")
-    noteEdit.classList.add("note__header__edit")
-
-    let noteIcon = document.createElement("i")
-    noteIcon.classList.add("fas", "fa-edit", "note__header__icon")
-    noteIcon.setAttribute("id", `icon${noteId}`)
-
-    noteEdit.appendChild(noteIcon)
-    noteHeader.appendChild(noteTitle)
-    noteHeader.appendChild(noteEdit)
-
-    let noteText = document.createElement("textarea")
-    noteText.classList.add("note__text")
-    noteText.setAttribute("placeholder", "Write notes here")
-    noteText.setAttribute("id", `text${noteId}`)
-
-    //INVISIBLE ELEMENTS
-    let noteUrl =  document.createElement("input")
-    noteUrl.setAttribute("value", "")
-    noteUrl.setAttribute("id", `url${noteId}`)
-    let noteImagePos =  document.createElement("input")
-    noteImagePos.setAttribute("value", "none")
-    noteImagePos.setAttribute("id", `imagePos${noteId}`)
-    let noteBackgroundColor =  document.createElement("input")
-    noteBackgroundColor.setAttribute("value", "#ffff88")
-    noteBackgroundColor.setAttribute("id", `backgroundColor${noteId}`)
-    let noteTextColor =  document.createElement("input")
-    noteTextColor.setAttribute("value", "#000000")
-    noteTextColor.setAttribute("id", `textColor${noteId}`)
+function createNote(noteId) {
     
-    let invisibleContainer = document.createElement("div")
-    invisibleContainer.appendChild(noteUrl)
-    invisibleContainer.appendChild(noteImagePos)
-    invisibleContainer.appendChild(noteBackgroundColor)
-    invisibleContainer.appendChild(noteTextColor)
-    invisibleContainer.classList = 'invisible'
+        let note = document.createElement("div")
+        note.classList.add("note")
+        note.setAttribute("id", noteId)
+        
+        let noteHeader = document.createElement("div")
+        noteHeader.classList.add("note__header")
+        noteHeader.setAttribute("id", `header${noteId}`)
 
-    note.appendChild(noteHeader)
-    note.appendChild(noteText)
-    note.appendChild(invisibleContainer)
-    mainArea.appendChild(note)
+        let noteTitle = document.createElement("h2")
+        noteTitle.classList.add("note__header__title")
+        noteTitle.innerHTML = notes[noteId].title
+        noteTitle.setAttribute("id", `title${noteId}`)
 
-    note.style.top = `${originY}px`
-    note.style.left = `${originX}px`
+        let noteEdit = document.createElement("div")
+        noteEdit.classList.add("note__header__edit")
+    
+        let noteIcon = document.createElement("i")
+        noteIcon.classList.add("fas", "fa-edit", "note__header__icon")
+        noteIcon.setAttribute("id", `icon${noteId}`)
+    
+        noteEdit.appendChild(noteIcon)
+        noteHeader.appendChild(noteTitle)
+        noteHeader.appendChild(noteEdit)
+    
+        let noteText = document.createElement("textarea")
+        noteText.classList.add("note__text")
+        noteText.setAttribute("placeholder", "Write notes here")
+        noteText.setAttribute("id", `text${noteId}`)
+        noteText.innerHTML = notes[noteId].text
+        if (noteText.addEventListener) {
+            noteText.addEventListener('input', () => textUpdate(noteId));
+          } else if (area.attachEvent) {
+            area.attachEvent('onpropertychange',() => textUpdate(noteId))
+        }
 
-    screenX = window.screen.width;
-    screenY = window.screen.height;
-    if (originX >= screenX * 0.8) {
-        originX = 0
-    } else {
-        originX += 20
+         //INVISIBLE ELEMENTS
+        let noteUrl =  document.createElement("input")
+        noteUrl.setAttribute("value", notes[noteId].url)
+        noteUrl.setAttribute("id", `url${noteId}`)
+        let noteImagePos =  document.createElement("input")
+        noteImagePos.setAttribute("value", notes[noteId].position)
+        noteImagePos.setAttribute("id", `imagePos${noteId}`)
+        let noteBackgroundColor =  document.createElement("input")
+        noteBackgroundColor.setAttribute("value", notes[noteId].noteColor)
+        noteBackgroundColor.setAttribute("id", `backgroundColor${noteId}`)
+        let noteTextColor =  document.createElement("input")
+        noteTextColor.setAttribute("value", notes[noteId].textColor)
+        noteTextColor.setAttribute("id", `textColor${noteId}`)
+        
+        let invisibleContainer = document.createElement("div")
+        invisibleContainer.appendChild(noteUrl)
+        invisibleContainer.appendChild(noteImagePos)
+        invisibleContainer.appendChild(noteBackgroundColor)
+        invisibleContainer.appendChild(noteTextColor)
+        invisibleContainer.classList = 'invisible'
 
+        note.appendChild(noteHeader)
+        note.appendChild(noteText)
+        note.appendChild(invisibleContainer)
+        mainArea.appendChild(note)
+
+        note.style.top = `${originY}px`
+        note.style.left = `${originX}px`
+
+        screenX = window.screen.width;
+        screenY = window.screen.height;
+        if (originX >= screenX * 0.8) {
+            originX = 0
+            originY += 40
+        } else {
+            originX +=40
+
+        }
+        
+
+        if (originY >= screenY * 0.8) {
+            originY = 0
+        }
+        
+
+        styleNote(noteId)
+
+        noteIcon.addEventListener("click", () => {
+            let changingId = noteId
+            activateModal(changingId)
+            
+            })
+    
+        // DRAGGING ELEMENTS
+    dragElement(document.getElementById(noteId));
+    
+    function dragElement(elmnt) {
+      let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById(`header${elmnt.id}`)) {
+        document.getElementById(`header${elmnt.id}`).onmousedown = dragMouseDown;
+      } else {
+        elmnt.onmousedown = dragMouseDown;
+      }
+    
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+      }
+    
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = `${(elmnt.offsetTop - pos2)}px`;
+        elmnt.style.left = `${(elmnt.offsetLeft - pos1)}px`;
+        notes[noteId].noteX = elmnt.style.left
+        notes[noteId].noteY = elmnt.style.top
+      }
+    
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+        localStorage.setObj("savedNotes", notes);
+      }
     }
-    if (originY >= screenY * 0.8) {
-        document.body.style.height += 50
-    }
-    originY += 20
+}
 
+
+diagonalCircle.addEventListener("click", () => {
+    let noteId = notes.length
     notes[noteId] = {
         id: noteId,
-        note: document.getElementById(noteId),
-        header: document.getElementById(`header${noteId}`), 
-        title: document.getElementById(`title${noteId}`),
-        icon: document.getElementById(`icon${noteId}`),
-        text: document.getElementById(`text${noteId}`),
-        url: document.getElementById(`url${noteId}`),
-        position: document.getElementById(`imagePos${noteId}`),
-        noteColor: document.getElementById(`backgroundColor${noteId}`),
-        textColor: document.getElementById(`textColor${noteId}`), 
+        title: `Note`,
+        text: '',
+        url: '',
+        position: "none",
+        noteColor: "#ffff88",
+        textColor: "#000000",
+        noteX: `0px`,
+        noteY: `0px`
     }
-
-    notes[noteId].icon.addEventListener("click", () => {
-        let changingId = noteId
-        activateModal(changingId)
-        
-        })
-
-    // DRAGGING ELEMENTS
-dragElement(document.getElementById(noteId));
-
-function dragElement(elmnt) {
-  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(`header${elmnt.id}`)) {
-    document.getElementById(`header${elmnt.id}`).onmousedown = dragMouseDown;
-  } else {
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
+    createNote(noteId);
 })
 
