@@ -13,6 +13,8 @@ Existing applications:
 
 -- Version history:
 
+- 2.0 Now under development: React JS is being incorporated into the core files to allow future projects to handle React
+
 - 1.1
   Custom Sticky Notes: Restructured the way the data of the notes are saved so now local storage can be used properly. The position of the notes is also stored
 
