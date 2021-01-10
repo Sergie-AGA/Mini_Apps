@@ -30,6 +30,10 @@ $font-cursive: "Nerko One", cursive;
 $font-sans: "Ubuntu", sans-serif;
 $font-serif: "Playfair Display", serif;
 
+$tablet: 1024px;
+$mobile: 768px;
+$vertical: 550px;
+
 // FUNCTIONS
 @function color($color-name) {
   @return map-get($colors, $color-name);

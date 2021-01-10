@@ -185,17 +185,6 @@
   display: none;
 }
 
-// FOOTER
-.footer {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  font-family: $font-sans;
-  font-size: 0.8rem;
-  color: transparentize(color(dark-main), 0.6);
-  z-index: 10;
-}
-
 // MODAL
 .block {
   border: none;

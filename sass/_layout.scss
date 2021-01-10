@@ -12,9 +12,15 @@
     padding: 0 3rem;
     font-family: $font-serif;
     font-size: 1.3rem;
+    @media screen and (max-width: $tablet) {
+      font-size: 1.1rem;
+    }
   }
   &__icon {
     font-size: 1.5rem;
+    @media screen and (max-width: $tablet) {
+      font-size: 1.3rem;
+    }
   }
   &__title {
     margin: 1rem;
@@ -24,12 +30,66 @@
     justify-content: space-between;
     font-family: $font-sans;
     margin: 1rem;
+    @media screen and (max-width: $mobile) {
+    }
     &__item {
       list-style: none;
       margin: 1rem;
       font-size: 1.2rem;
+      @media screen and (max-width: $tablet) {
+        font-size: 1rem;
+      }
     }
   }
+}
+
+// BURGER MENU
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger {
+  width: 50px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger::before {
+  transform: translateY(-16px);
+}
+.menu-btn__burger::after {
+  transform: translateY(16px);
+}
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
 }
 
 // ABOUT
@@ -45,6 +105,10 @@
   border-radius: 10px;
   padding: 20px;
   font-family: $font-sans;
+  @media screen and (max-width: $tablet) {
+    width: 95%;
+    padding: 7px;
+  }
   &__heading {
     font-size: 1.3rem;
     margin: 0.8rem;
@@ -59,5 +123,22 @@
     text-align: justify;
     font-size: 1rem;
     margin: 0.8rem;
+  }
+}
+
+// FOOTER
+.footer {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  font-family: $font-sans;
+  font-size: 0.8rem;
+  color: transparentize(color(dark-main), 0.6);
+  z-index: 10;
+  @media screen and (max-width: $tablet) {
+    bottom: 1rem;
+    right: 50%;
+    transform: translateX(50%);
+    pointer-events: none;
   }
 }

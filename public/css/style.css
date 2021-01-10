@@ -22,7 +22,8 @@ h3 {
   text-align: center; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
   a:visited {
     color: inherit; }
 
@@ -39,8 +40,14 @@ a {
     padding: 0 3rem;
     font-family: "Playfair Display", serif;
     font-size: 1.3rem; }
+    @media screen and (max-width: 1024px) {
+      .navbar__main {
+        font-size: 1.1rem; } }
   .navbar__icon {
     font-size: 1.5rem; }
+    @media screen and (max-width: 1024px) {
+      .navbar__icon {
+        font-size: 1.3rem; } }
   .navbar__title {
     margin: 1rem; }
   .navbar__items {
@@ -52,6 +59,56 @@ a {
       list-style: none;
       margin: 1rem;
       font-size: 1.2rem; }
+      @media screen and (max-width: 1024px) {
+        .navbar__items__item {
+          font-size: 1rem; } }
+
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out; }
+
+.menu-btn__burger {
+  width: 50px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out; }
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out; }
+
+.menu-btn__burger::before {
+  transform: translateY(-16px); }
+
+.menu-btn__burger::after {
+  transform: translateY(16px); }
+
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none; }
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px); }
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px); }
 
 .about {
   background-color: #0e7a46;
@@ -65,6 +122,10 @@ a {
   border-radius: 10px;
   padding: 20px;
   font-family: "Ubuntu", sans-serif; }
+  @media screen and (max-width: 1024px) {
+    .about {
+      width: 95%;
+      padding: 7px; } }
   .about__heading {
     font-size: 1.3rem;
     margin: 0.8rem;
@@ -77,6 +138,21 @@ a {
     text-align: justify;
     font-size: 1rem;
     margin: 0.8rem; }
+
+.footer {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.8rem;
+  color: rgba(1, 147, 12, 0.4);
+  z-index: 10; }
+  @media screen and (max-width: 1024px) {
+    .footer {
+      bottom: 1rem;
+      right: 50%;
+      transform: translateX(50%);
+      pointer-events: none; } }
 
 .lower-position-modal {
   position: absolute;
@@ -229,15 +305,6 @@ a {
   z-index: 30;
   transition: 0.4s;
   display: none; }
-
-.footer {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 0.8rem;
-  color: rgba(1, 147, 12, 0.4);
-  z-index: 10; }
 
 .block {
   border: none;
