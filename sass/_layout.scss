@@ -6,6 +6,17 @@
   height: 5rem;
   background-color: color(dark-main);
   color: color(grey-1);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  @media screen and (max-width: $tablet) {
+    height: 4rem;
+    margin-bottom: 2rem;
+  }
+  @media screen and (max-width: $mobile) {
+    height: 3rem;
+  }
   &__main {
     display: flex;
     align-items: center;
@@ -41,6 +52,12 @@
       }
     }
   }
+}
+
+// WRAPPER
+#root {
+  position: relative;
+  min-height: 100vh;
 }
 
 // BURGER MENU
@@ -97,7 +114,7 @@
   background-color: color(main-dark);
   color: color(grey-1);
   position: absolute;
-  top: 20%;
+  top: 7rem;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -105,9 +122,13 @@
   border-radius: 10px;
   padding: 20px;
   font-family: $font-sans;
+  &::after {
+    padding: 1rem;
+  }
   @media screen and (max-width: $tablet) {
     width: 95%;
     padding: 7px;
+    top: 5rem;
   }
   &__heading {
     font-size: 1.3rem;

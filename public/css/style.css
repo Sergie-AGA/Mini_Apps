@@ -11,7 +11,9 @@
 body {
   box-sizing: border-box;
   background-color: #dff1e1;
-  overflow-x: hidden; }
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh; }
 
 h1,
 h2,
@@ -27,13 +29,41 @@ a {
   a:visited {
     color: inherit; }
 
+@supports (display: flex) and (display: grid) and ((perspective: 10px) or (-moz-perspective: 10px) or (-webkit-perspective: 10px) or (-ms-perspective: 10px)) and ((-moz-clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%)) or (-webkit-clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%)) or (clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%))) and ((-webkit-transform: translate(-50%, -50%) rotate(-130deg)) or (-ms-transform: translate(-50%, -50%) rotate(-130deg)) or (transform: translate(-50%, -50%) rotate(-130deg))) and ((-webkit-background-clip: text) or (-webkit-text-fill-color: transparent) or (-moz-background-clip: text)) and (animation: change-position-shadow ease-in 1.5s forwards) {
+  .not-supported {
+    display: none; } }
+
+.not-supported {
+  padding: 0;
+  margin: 0;
+  width: 90%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fa9488;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  padding: 5px; }
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 5rem;
   background-color: #01930c;
-  color: #ddd; }
+  color: #ddd;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20; }
+  @media screen and (max-width: 1024px) {
+    .navbar {
+      height: 4rem;
+      margin-bottom: 2rem; } }
+  @media screen and (max-width: 768px) {
+    .navbar {
+      height: 3rem; } }
   .navbar__main {
     display: flex;
     align-items: center;
@@ -62,6 +92,10 @@ a {
       @media screen and (max-width: 1024px) {
         .navbar__items__item {
           font-size: 1rem; } }
+
+#root {
+  position: relative;
+  min-height: 100vh; }
 
 .menu-btn {
   position: relative;
@@ -114,7 +148,7 @@ a {
   background-color: #0e7a46;
   color: #ddd;
   position: absolute;
-  top: 20%;
+  top: 7rem;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -122,10 +156,13 @@ a {
   border-radius: 10px;
   padding: 20px;
   font-family: "Ubuntu", sans-serif; }
+  .about::after {
+    padding: 1rem; }
   @media screen and (max-width: 1024px) {
     .about {
       width: 95%;
-      padding: 7px; } }
+      padding: 7px;
+      top: 5rem; } }
   .about__heading {
     font-size: 1.3rem;
     margin: 0.8rem;
@@ -158,23 +195,6 @@ a {
   position: absolute;
   bottom: 3rem;
   left: 12rem; }
-
-@supports (display: flex) and (display: grid) and ((perspective: 10px) or (-moz-perspective: 10px) or (-webkit-perspective: 10px) or (-ms-perspective: 10px)) and ((-moz-clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%)) or (-webkit-clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%)) or (clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%))) and ((-webkit-transform: translate(-50%, -50%) rotate(-130deg)) or (-ms-transform: translate(-50%, -50%) rotate(-130deg)) or (transform: translate(-50%, -50%) rotate(-130deg))) and ((-webkit-background-clip: text) or (-webkit-text-fill-color: transparent) or (-moz-background-clip: text)) and (animation: change-position-shadow ease-in 1.5s forwards) {
-  .not-supported {
-    display: none; } }
-
-.not-supported {
-  padding: 0;
-  margin: 0;
-  width: 90%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fa9488;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 5px;
-  padding: 5px; }
 
 .cursive-title {
   font-family: "Nerko One", cursive;
