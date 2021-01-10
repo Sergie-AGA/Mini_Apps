@@ -1,5 +1,5 @@
 import React from "react";
-import pageIdeasLogo from "../../../public/assets/Page ideas logo.svg";
+import pageIdeasLogo from "../../assets/Page ideas logo.svg";
 
 const More = () => {
   return (
