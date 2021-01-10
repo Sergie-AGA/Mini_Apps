@@ -156,8 +156,6 @@ a {
   border-radius: 10px;
   padding: 20px;
   font-family: "Ubuntu", sans-serif; }
-  .about::after {
-    padding: 1rem; }
   @media screen and (max-width: 1024px) {
     .about {
       width: 95%;

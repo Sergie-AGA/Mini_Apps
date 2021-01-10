@@ -17,7 +17,7 @@ const Navbar = ({ icon, title }) => {
           <Link to="/about">About</Link>
         </li>
         <li className="navbar__items__item">
-          <Link to="/more">More tools</Link>
+          <Link to="/more">More resources</Link>
         </li>
       </ul>
     </nav>

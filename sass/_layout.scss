@@ -122,9 +122,7 @@
   border-radius: 10px;
   padding: 20px;
   font-family: $font-sans;
-  &::after {
-    padding: 1rem;
-  }
+
   @media screen and (max-width: $tablet) {
     width: 95%;
     padding: 7px;
