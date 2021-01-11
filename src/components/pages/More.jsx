@@ -10,7 +10,7 @@ const More = () => {
           href="https://github.com/Sergie-AGA"
           target="_blank">
           <div className="more__buttons__container">
-            <i className="fab fa-github" />
+            <i className="fab fa-github more__buttons__icon" />
             <p className="more__buttons__label">GitHub</p>
           </div>
         </a>
@@ -33,7 +33,7 @@ const More = () => {
           href="https://api-sea-by-sieger.herokuapp.com/"
           target="_blank">
           <div className="more__buttons__container">
-            <i className="fas fa-ship" />
+            <i className="fas fa-water more__buttons__icon" />
             <p className="more__buttons__label">API Sea</p>
           </div>
         </a>

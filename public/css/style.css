@@ -155,7 +155,8 @@ a {
   max-width: 1100px;
   border-radius: 10px;
   padding: 20px;
-  font-family: "Ubuntu", sans-serif; }
+  font-family: "Ubuntu", sans-serif;
+  box-shadow: 1px 1px 2px 3px rgba(0, 0, 0, 0.3); }
   @media screen and (max-width: 1024px) {
     .about {
       width: 95%;
@@ -173,6 +174,85 @@ a {
     text-align: justify;
     font-size: 1rem;
     margin: 0.8rem; }
+
+.more {
+  background-color: #4f5b68;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: justify;
+  width: 40%;
+  position: absolute;
+  left: 50%;
+  top: 20rem;
+  transform: translatex(-50%);
+  box-shadow: 1px 1px 2px 3px rgba(0, 0, 0, 0.3); }
+  @media screen and (max-width: 1024px) {
+    .more {
+      width: 60%;
+      top: 15rem; } }
+  @media screen and (max-width: 768px) {
+    .more {
+      width: 90%;
+      top: 10rem; } }
+  .more__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap; }
+  .more__buttons {
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    width: 8rem;
+    height: 8rem;
+    border-top: solid 2px rgba(221, 221, 221, 0.7);
+    border-right: solid 2px rgba(157, 157, 157, 0.3);
+    border-bottom: solid 2px rgba(157, 157, 157, 0.3);
+    border-left: solid 2px rgba(221, 221, 221, 0.7);
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative; }
+    @media screen and (max-width: 1024px) {
+      .more__buttons {
+        width: 6.5rem;
+        height: 6.5rem; } }
+    @media screen and (max-width: 768px) {
+      .more__buttons {
+        width: 5rem;
+        height: 5rem; } }
+    .more__buttons__container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+    .more__buttons:active {
+      border-top: solid 2px rgba(157, 157, 157, 0.3);
+      border-right: solid 2px rgba(221, 221, 221, 0.7);
+      border-bottom: solid 2px rgba(221, 221, 221, 0.7);
+      border-left: solid 2px rgba(157, 157, 157, 0.3); }
+    .more__buttons:hover {
+      background-color: rgba(55, 55, 55, 0.6); }
+    .more__buttons__icon {
+      width: 4rem;
+      font-size: 4rem;
+      color: #ddd;
+      fill: #ddd; }
+      @media screen and (max-width: 1024px) {
+        .more__buttons__icon {
+          width: 3rem; } }
+      @media screen and (max-width: 768px) {
+        .more__buttons__icon {
+          width: 2rem; } }
+    .more__buttons__label {
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 400;
+      color: #ddd; }
+      @media screen and (max-width: 1024px) {
+        .more__buttons__label {
+          font-size: 0.8rem; } }
+      @media screen and (max-width: 768px) {
+        .more__buttons__label {
+          font-size: 0.7rem; } }
 
 .footer {
   position: fixed;
