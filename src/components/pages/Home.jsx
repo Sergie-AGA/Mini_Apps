@@ -1,7 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Projects from "../projects/Projects";
 
 const Home = () => {
-  return <div>Dude</div>;
+  return (
+    <Fragment>
+      <Projects />
+    </Fragment>
+  );
 };
 
 export default Home;
