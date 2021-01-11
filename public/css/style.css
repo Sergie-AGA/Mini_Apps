@@ -212,7 +212,7 @@ a {
     cursor: pointer;
     transition: 0.3s;
     position: relative; }
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1200px) {
       .more__buttons {
         width: 6.5rem;
         height: 6.5rem; } }
@@ -237,12 +237,14 @@ a {
       font-size: 4rem;
       color: #ddd;
       fill: #ddd; }
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: 1200px) {
         .more__buttons__icon {
-          width: 3rem; } }
+          width: 3rem;
+          font-size: 3rem; } }
       @media screen and (max-width: 768px) {
         .more__buttons__icon {
-          width: 2rem; } }
+          width: 2rem;
+          font-size: 2rem; } }
     .more__buttons__label {
       font-family: "Ubuntu", sans-serif;
       font-weight: 400;
