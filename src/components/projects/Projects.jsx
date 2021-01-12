@@ -35,6 +35,25 @@ const Projects = () => {
     false,
     "https://sergie-aga.github.io/Mini_Apps/app-list/custom-sticky-notes/index.html"
   );
+
+  const project2 = new ProjectTemplate(
+    1,
+    "Placeholder project",
+    "This is how the page will look with more projects",
+    customStickyNotesLogo,
+    false,
+    "#"
+  );
+
+  const project3 = new ProjectTemplate(
+    2,
+    "Placeholder project",
+    "This is how the page will look with more projects",
+    customStickyNotesLogo,
+    false,
+    "#"
+  );
+
   return (
     <Fragment>
       {activeProjects.map((project) => (

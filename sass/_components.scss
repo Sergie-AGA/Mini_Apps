@@ -9,6 +9,12 @@
   border-radius: 10px;
   padding: 20px;
   min-height: 12rem;
+  &:nth-of-type(2) {
+    flex-direction: row-reverse;
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
   @media screen and (max-width: $mobile) {
     flex-direction: column;
   }

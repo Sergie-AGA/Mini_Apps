@@ -14,6 +14,7 @@ Existing applications:
 -- Version history:
 
 - 2.0 Now under development: React JS is being incorporated into the core files to allow future projects to handle React
+  Created a home page listing existing projects
   Created an about page.
   Created a More Resources page.
 
