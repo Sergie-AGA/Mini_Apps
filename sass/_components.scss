@@ -8,7 +8,8 @@
   color: color(grey-1);
   border-radius: 10px;
   padding: 20px;
-  min-height: 10rem;
+  min-height: 12rem;
+
   &__image-side {
     width: 35%;
   }
@@ -16,8 +17,31 @@
     width: 65%;
   }
   &__image {
+    display: block;
+    margin: auto;
+    width: 80%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
   }
   &__button {
+    margin: auto;
+    display: block;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: color(main);
+    font-family: $font-sans;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.2s;
+    &:hover {
+      background-color: color(main-light);
+      color: black;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
   }
   &__title {
     text-align: justify;

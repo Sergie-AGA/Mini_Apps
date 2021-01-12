@@ -5,12 +5,7 @@ const Project = ({ project: { title, icon, description, react, link } }) => {
   return (
     <div className="project">
       <div className="project__image-side">
-        <img
-          src={icon}
-          alt=""
-          className="project__image"
-          style={{ width: "60px" }}
-        />
+        <img src={icon} alt="" className="project__image" />
         {react ? (
           "Pending implementation"
         ) : (
