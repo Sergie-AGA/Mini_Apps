@@ -56,14 +56,23 @@ a {
   border-radius: 10px;
   padding: 20px;
   min-height: 12rem; }
+  @media screen and (max-width: 768px) {
+    .project {
+      flex-direction: column; } }
   .project__image-side {
     width: 35%; }
+    @media screen and (max-width: 768px) {
+      .project__image-side {
+        width: 100%; } }
   .project__text-side {
     width: 65%; }
+    @media screen and (max-width: 768px) {
+      .project__text-side {
+        width: 100%; } }
   .project__image {
     display: block;
     margin: auto;
-    width: 80%;
+    width: 90%;
     border-radius: 10px;
     margin-bottom: 1rem; }
   .project__button {
@@ -78,6 +87,9 @@ a {
     font-size: 1rem;
     font-weight: 600;
     transition: 0.2s; }
+    @media screen and (max-width: 768px) {
+      .project__button {
+        width: 90%; } }
     .project__button:hover {
       background-color: #39e894;
       color: black; }
@@ -88,7 +100,11 @@ a {
     font-family: "Playfair Display", serif;
     font-size: 2rem;
     border-bottom: solid 2px #ddd;
+    margin-top: 0.5rem;
     margin-bottom: 1rem; }
+    @media screen and (max-width: 768px) {
+      .project__title {
+        font-size: 1.5rem; } }
   .project__description {
     text-align: justify;
     font-family: "Ubuntu", sans-serif;
