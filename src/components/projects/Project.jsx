@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Project = ({ project: { title, icon, description, react, link } }) => {
   return (
     <div className="project">
-      <div>
+      <div className="project__image-side">
         <img
           src={icon}
           alt=""
-          className="project__img"
+          className="project__image"
           style={{ width: "60px" }}
         />
         {react ? (
@@ -19,7 +19,7 @@ const Project = ({ project: { title, icon, description, react, link } }) => {
           </a>
         )}
       </div>
-      <div>
+      <div className="project__text-side">
         <h3 className="project__title"> {title} </h3>
         <p className="project__description"> {description} </p>
       </div>

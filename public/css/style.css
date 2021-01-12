@@ -46,6 +46,31 @@ a {
   border-radius: 5px;
   padding: 5px; }
 
+.project {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: flex;
+  background-color: #0e7a46;
+  color: #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 10rem; }
+  .project__image-side {
+    width: 35%; }
+  .project__text-side {
+    width: 65%; }
+  .project__title {
+    text-align: justify;
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    border-bottom: solid 2px #ddd;
+    margin-bottom: 1rem; }
+  .project__description {
+    text-align: justify;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem; }
+
 .navbar {
   display: flex;
   justify-content: space-between;
