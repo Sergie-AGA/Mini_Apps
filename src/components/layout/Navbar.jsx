@@ -2,9 +2,19 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Navbar = ({ icon, title, toggleMenu, burgerMenu, activeMenu }) => {
+const Navbar = ({
+  icon,
+  title,
+  toggleMenu,
+  burgerMenu,
+  activeMenu,
+  closeMenu,
+}) => {
   function handleClick() {
     toggleMenu(burgerMenu);
+  }
+  function dismissMenu() {
+    closeMenu();
   }
 
   return (
@@ -19,17 +29,17 @@ const Navbar = ({ icon, title, toggleMenu, burgerMenu, activeMenu }) => {
         </div>
         <ul className={activeMenu}>
           <li className="navbar__items__item">
-            <Link to="/" onClick={handleClick}>
+            <Link to="/" onClick={dismissMenu}>
               Home
             </Link>
           </li>
           <li className="navbar__items__item">
-            <Link to="/about" onClick={handleClick}>
+            <Link to="/about" onClick={dismissMenu}>
               About
             </Link>
           </li>
           <li className="navbar__items__item">
-            <Link to="/more" onClick={handleClick}>
+            <Link to="/more" onClick={dismissMenu}>
               More resources
             </Link>
           </li>

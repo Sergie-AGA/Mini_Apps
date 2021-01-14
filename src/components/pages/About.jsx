@@ -13,8 +13,9 @@ const About = () => {
         Here you will be able to host and find a range of different applications
         made in Javascript and explore its functionalities. While the site is
         made in React JS, using it in a project is optional, in which case it
-        should be created in an html file and linked with an anchor tag
-        (&lt;a&gt;).
+        should be created in an html file and linked with an anchor tag.
+        Projects listed are either personal or commercial, plublished with
+        permission of the client. (&lt;a&gt;).
       </p>
       <p className="about__text">
         This is an ongoing project being constantly updated. Come back regularly

@@ -1,19 +1,21 @@
 # Mini_Apps by Sergie
 
-An aggregator of small applications aimed at exploring different web development functionalities to inspire ideas for your next project.
+An aggregator of small applications aimed at exploring different web development functionalities to inspire ideas for your next project. Projects listed are either personal or commercial, plublished with permission of the client.
 
-This project uses the CSS pre-processor SASS (SCSS to be specific) and BEM naming convention along with a variation of the 7-1 CSS architecture.
+This project uses React JS to handle the UI, as well as the CSS pre-processor SASS (SCSS to be specific) and BEM naming convention along with a variation of the 7-1 CSS architecture.
 Each program inside it has varying functionalities.
 
-Current version code: 2.X
-Current version live: 1.1
+Current version code: 2.0
+Current version live: 2.0
+Live version hosted in: https://mini-apps-by-sieger.netlify.app/. Some apps might be hosted in Github pages.
+
 Existing applications:
 
 1. Custom Sticky Notes: Create Sticky Notes that can be customized with colors, images and more. Your notes are saved in the local storage.
 
 -- Version history:
 
-- 2.0 Now under development: React JS is being incorporated into the core files to allow future projects to handle React
+- 2.0 The main application now uses React JS, but using React in applications is optional.
   Created a home page listing existing projects
   Created an about page.
   Created a More Resources page.

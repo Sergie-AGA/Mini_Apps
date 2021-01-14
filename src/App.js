@@ -20,6 +20,11 @@ function App() {
     }
   }
 
+  function closeMenu() {
+    setBurger("burger-menu__inside");
+    setMenu("navbar__items");
+  }
+
   return (
     <Fragment>
       <Router>
@@ -27,6 +32,7 @@ function App() {
           toggleMenu={toggleMenu}
           burgerMenu={burgerMenu}
           activeMenu={activeMenu}
+          closeMenu={closeMenu}
         />
         <Switch>
           <Route exact path="/" component={Home} />
