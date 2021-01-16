@@ -18,10 +18,6 @@ const Project = ({ project: { title, icon, description, react, link } }) => {
         <h3 className="project__title"> {title} </h3>
         <p className="project__description"> {description} </p>
       </div>
-
-      {/* <Link to={`/user/${login}`} className="btn btn-dark btn-sm my-1">
-          More
-        </Link> */}
     </div>
   );
 };

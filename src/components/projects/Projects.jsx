@@ -33,7 +33,7 @@ const Projects = () => {
     "An application that allows the user to create notes that can be easily edited and customized in terms of colour, size, position, content and background-image, using modern practices of object-oriented Javascript (ES6) and SASS. It saves changes in local storage.",
     customStickyNotesLogo,
     false,
-    "https://sergie-aga.github.io/Mini_Apps/app-list/custom-sticky-notes/index.html"
+    "https://sergie-aga.github.io/vanilla-apps/custom-sticky-notes/index.html"
   );
 
   const project2 = new ProjectTemplate(

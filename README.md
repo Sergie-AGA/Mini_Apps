@@ -5,9 +5,11 @@ An aggregator of small applications aimed at exploring different web development
 This project uses React JS to handle the UI, as well as the CSS pre-processor SASS (SCSS to be specific) and BEM naming convention along with a variation of the 7-1 CSS architecture.
 Each program inside it has varying functionalities.
 
+Live version with React JS hosted in: https://mini-apps-by-sieger.netlify.app/.
+Vanilla apps hosted in: https://github.com/Sergie-AGA/vanilla-apps
+
 Current version code: 2.0
 Current version live: 2.0
-Live version hosted in: https://mini-apps-by-sieger.netlify.app/. Some apps might be hosted in Github pages.
 
 Existing applications:
 
